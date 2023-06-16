@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,13 @@ Route::get('/', function () {
     $name = 'Sofia';
     return view('welcome', compact('name'));
 });
+
+Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('getalldocs');
+Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('getdoc');
+
+Route::post('/documents', [DocumentController::class, 'postDocument'])->name('postdoc');
+
+Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('deletedoc');
+
+Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('putdoc');
+
