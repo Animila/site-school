@@ -39,16 +39,23 @@ class DocumentController extends Controller
         dd($delete_doc);
     }
 
-    public function putDocument($id)
+    public function putDocument($id, Request $request)
     {
-        $put_doc = Documents::find($id);
+        try {
+            $param = $request->request->all();
+            $put_doc = Documents::find($id);
 
-        $put_doc['name'] = 'Переименованный отчет';
-        $put_doc['date'] = '2023-06-16';
-        $put_doc['pathname'] = 'D/newfolder/file.docx';
-        $put_doc['typeid'] = 2;
+            $put_doc['name'] = $param['name'];
+            $put_doc['date'] = $param['date'];
+            $put_doc['pathname'] = $param['pathname'];
+            $put_doc['typeid'] = $param['typeid'];
 
-        $put_doc->save();
-        dd($put_doc);
+            $put_doc->save();
+            $result = ["success"=> true, "message"=>$put_doc];
+        } catch (\Exception $e) {
+            $result = ["success"=>false, "message"=>$e];
+        }
+
+        return response()->json($result);
     }
 }

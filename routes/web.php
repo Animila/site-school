@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
     return view('welcome', compact('name'));
 });
 
+//документы
 Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('getalldocs');
 Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('getdoc');
 
@@ -28,3 +30,12 @@ Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])-
 
 Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('putdoc');
 
+//мероприятия
+Route::get('/events', [EventsController::class, 'getAllEvents'])->name('getallevents');
+Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('getevent');
+
+Route::post('/events', [EventsController::class, 'postEvent'])->name('postevent');
+
+Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('deleteevent');
+
+Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('putevent');
