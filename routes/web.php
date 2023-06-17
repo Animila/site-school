@@ -18,7 +18,7 @@ use App\Http\Controllers\SocialController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 //документы
 Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('getalldocs');
@@ -43,3 +43,4 @@ Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('puteven
 // Oauth Авторизация
 Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
 Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
+Route::get('/auth/logout', [SocialController::class, 'logout'])->name('auth.logout');
