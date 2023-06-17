@@ -1,64 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Админ панель школы
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Данный проект представляет собой админ панель, с помощью которой преподаватели смогут хранить файлы в удобном формате. Есть возможность загрузки документов на [Яндекс.Диск](https://disk.yandex.ru), создание событий, сортировка данных по различным фильтрам, а также вывод их в удобном формате.  
 
-## About Laravel
+## Стек-технологии
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Для бекенда используется PHP(v7.4.29-cli) и [Laravel](https://laravel.com/) (v10.0). Также используется пакет [Socialite](https://socialiteproviders.com/) для авторизации в яндексе и [данный репозиторий](https://github.com/leonied7/yandex-disk-api) для работы с API Диска. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Сервер развернут на серверах .... с установленной системой Ubuntu 20.04.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Установка и запуск
 
-## Learning Laravel
+Для установки проекта требуется иметь 
+ - [Laravel](https://laravel.com/)
+ - [Composer](https://getcomposer.org/)
+ - [Open Server Panel](https://ospanel.io/) (для имитации сервера)
+ - [Git](https://git-scm.com)
+ - [NodeJs](https://nodejs.org/ru/) (v16.16.0)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+После установки Open Server, необходимо зайти в папку `domains` в директории OSPanel, после чего открыть консоль (желательно git bash) и прописать:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```shell
+# для загрузки репозитория
+git clone https://github.com/Animila/site-school.git
+# открываем папку
+cd site-school
+# устанавливаем все зависимости
+composer install
+```
 
-## Laravel Sponsors
+Затем мы копируем .env.example и сохраняем там же но под именем .env. Необходимо создать базу данных в PHPMyAdmin, и записать ее в .env файл.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+После этого делаем миграцию всех данных (проверяем, что open server запущен):
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+`php artisan migrate`
 
-## Contributing
+И в конце просто генерируем ключ активации:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+`php artisan key:generate`
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Использование
 
-## Security Vulnerabilities
+При первом запуске и авторизации в системе, необходимо авторизовываться в том аккаунте, через который будет использоваться Yandex.Disk. Также для него будет создан пароль, который уже потом можно будет поменять только в phpmyadmin.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## Авторы
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> Иванова Софья: UI/UX дизайнер, Fullstack-разработчик
+>
+> Христофоров Илья: ТехЛид, Backend-разработчик
+>
+> Яровенко Анна: менеджер, аналитик
+>
+> Андреев Эрсан: DevOps, QA
+
+## Лицензия
+
+Данный проект разрабатывается в рамках производственной практики. Все материалы, за исключением лицензированных изображений и материалов компаний и организаций, распространяются по GNU лицензии
