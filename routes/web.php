@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,7 @@ use App\Http\Controllers\EventsController;
 */
 
 Route::get('/', function () {
-    $name = 'Sofia';
-    return view('welcome', compact('name'));
+    return view('welcome');
 });
 
 //документы
@@ -39,3 +39,7 @@ Route::post('/events', [EventsController::class, 'postEvent'])->name('postevent'
 Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('deleteevent');
 
 Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('putevent');
+
+// Oauth Авторизация
+Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
+Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
