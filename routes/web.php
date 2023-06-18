@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\RecentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +16,24 @@ use App\Http\Controllers\EventsController;
 |
 */
 
-Route::get('/', function () {
-    $name = 'Sofia';
-    return view('welcome', compact('name'));
-});
+Route::get('/', [RecentController::class, 'getRecent'])->name('get');
 
 //документы
-Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('getalldocs');
-Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('getdoc');
+Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('documents.all');
+Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('documents.one');
 
-Route::post('/documents', [DocumentController::class, 'postDocument'])->name('postdoc');
+Route::post('/documents', [DocumentController::class, 'postDocument'])->name('documents.post');
 
-Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('deletedoc');
+Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('documents.delete');
 
-Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('putdoc');
+Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('documents.put');
 
 //мероприятия
-Route::get('/events', [EventsController::class, 'getAllEvents'])->name('getallevents');
-Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('getevent');
+Route::get('/events', [EventsController::class, 'getAllEvents'])->name('events.all');
+Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('events.one');
 
-Route::post('/events', [EventsController::class, 'postEvent'])->name('postevent');
+Route::post('/events', [EventsController::class, 'postEvent'])->name('events.post');
 
-Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('deleteevent');
+Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
 
-Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('putevent');
+Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('events.put');
