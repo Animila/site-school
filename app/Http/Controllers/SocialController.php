@@ -75,4 +75,12 @@ class SocialController extends Controller
             'token' => $socialiteUser->token,
         ]);
     }
+
+    public function profile() {
+        return view('content/profile');
+    }
+
+    public function editAccount() {
+        return redirect()->route('auth.profile');
+    }
 }
