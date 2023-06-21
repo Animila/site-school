@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Documents;
+use App\Models\SocialAccount;
 use Illuminate\Http\Request;
+use Leonied7\Yandex\Disk;
 
 class DocumentController extends Controller
 {
+    public function getDisk() {
+        $oauth_token = SocialAccount::first()->token;
+        $yandexDisk = new Disk($oauth_token);
+        $root = $yandexDisk->directory('/');
+
+        dd($root->getChildren());
+    }
+
     public function getAllDocument()
     {
         $doc_list = Documents::all()->all();
