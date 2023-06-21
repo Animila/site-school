@@ -39,5 +39,5 @@ Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvi
 Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
 Route::get('/auth/logout', [SocialController::class, 'logout'])->name('auth.logout');
 
-Route::get('/disk', [DiskController::class, 'getDisk']);
-Route::post('/disk', [DiskController::class, 'postDoc']);
+Route::get('/disk', [DiskController::class, 'openView']);
+Route::post('/disk', [DiskController::class, 'postDoc'])->name('disk.post');
