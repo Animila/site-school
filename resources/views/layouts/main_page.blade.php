@@ -33,7 +33,7 @@
 
                 <div class="user__name">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
                 <div class="user__menu">
-                    <a class="user__cabinet" href="#">Кабинет</a>
+                    <a class="user__cabinet" href="{{route('auth.profile')}}">Кабинет</a>
                     <a class="user__exit" href="{{route('auth.logout')}}">Выйти</a>
                 </div>
             </div>

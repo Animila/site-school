@@ -1,0 +1,11 @@
+.content-box {
+    background-color: white;
+    border: 1px solid #505050;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.content-box.filters {
+}

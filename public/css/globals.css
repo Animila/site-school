@@ -1,0 +1,24 @@
+html, body {
+    background-color: #EDEDED;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    font-size: 100%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.row {
+    display: flex;
+    gap: 1vw;
+    flex-wrap: nowrap;
+}
+.row.row-column {
+    flex-direction: column;
+}

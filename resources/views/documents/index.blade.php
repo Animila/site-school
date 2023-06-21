@@ -2,28 +2,40 @@
 @section('content')
     <h1>Документы</h1>
 
-    <!-- Фильтры -->
-    <div class="content-box filters">
-        <div class="filter-box">
-            <p>Наименование:</p>
-            <input type="text" placeholder="Введите наименование" class="filter-input big">
+    <div class="row">
+        <div class="content-box">
+            <h2>Действия</h2>
+            <div class="row row-column" style="margin-top: 1vw;">
+                <div class="btn btn-new"><a href="{{route('documents.createShow')}}">Создать</a></div>
+            </div>
         </div>
+        <!-- Фильтры -->
+        <div class="content-box filters">
+            <h2>Фильтры</h2>
+            <div class="row row-column">
+                <div class="filter-box">
+                    <p>Наименование:</p>
+                    <input type="text" placeholder="Введите наименование" class="filter-input big">
+                </div>
 
-        <div class="filter-box">
-            <p>Дата:</p>
-            <input type="date" class="filter-input med">
+                <div class="filter-box">
+                    <p>Дата:</p>
+                    <input type="date" class="filter-input med">
+                </div>
+                <div class="filter-box">
+                    <p>Сортировать по:</p>
+                    <select name="filterType" class="filter-input med">
+                        <option value="">Выберите тип сортировки</option>
+                        <option value="1">Наименование</option>
+                        <option value="2">Дата</option>
+                        <option value="3">Пользователь</option>
+                    </select>
+                </div>
+            </div>
+
+
+
         </div>
-
-        <div class="filter-box">
-            <p>Сортировать по:</p>
-            <select name="filterType" class="filter-input med">
-                <option value="">Выберите тип сортировки</option>
-                <option value="1">Наименование</option>
-                <option value="2">Дата</option>
-                <option value="3">Пользователь</option>
-            </select>
-        </div>
-
     </div>
 
     <!-- Содержимое -->

@@ -14,20 +14,20 @@ class DocumentController extends Controller
     public function index()
     {
         $doc_list = Documents::all()->all();
-        return view('content/documents', compact('doc_list'));
+        return view('documents/index', compact('doc_list'));
     }
 
     // GET id
     public function show($id)
     {
         $doc = Documents::find($id);
-        return view('content/document', compact('doc'));
+        return view('documents/show', compact('doc'));
     }
 
     // GET
     public function createShow() {
         /* вывод экрана создания */
-        return view('content/file_load');
+        return view('documents/create');
     }
 
     // POST

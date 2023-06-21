@@ -11,14 +11,14 @@ class EventsController extends Controller
     public function getAllEvents()
     {
         $event_list = Events::all()->all();
-        return view('content/events', compact('event_list'));
+        return view('events/index', compact('event_list'));
     }
 
     //получить одно мероприятие
     public function getOneEvent($id)
     {
         $event = Events::find($id);
-        return view('content/event', compact('event'));
+        return view('events/show', compact('event'));
     }
 
     //создать мероприятие

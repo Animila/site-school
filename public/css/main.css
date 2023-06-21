@@ -1,35 +1,27 @@
-html, body {
-    background-color: #EDEDED;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-}
+@import "btn.css";
+@import "blocks.css";
+@import "globals.css";
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    /*width: 60%;*/
     margin: 0 16.146vw;
 }
 
 h1 {
-    width: 100%;
     font-family: Arial, serif;
     color: #5A1E67;
     font-size: 40px;
+    align-self: start;
 }
 
 h2 {
     font-family: Arial, serif;
     font-size: 20px;
     color: #2E2E2E;
-    margin-left: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 p {
@@ -57,12 +49,8 @@ td {
     border: 1px solid #6A6A6A;
 }
 
-a {
-    outline: none;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    border-radius: 100%;
+.create-box {
+    margin-top: 30px;
 }
 
 .edit-button {
@@ -94,14 +82,8 @@ a {
     width: 15%;
 }
 
-.content-box {
-    width: 100%;
-    background-color: white;
-    border: 1px solid #505050;
-    border-radius: 15px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-}
+
+
 
 .db-header {
     display: flex;
@@ -138,13 +120,7 @@ a {
     padding-left: 5px;
 }
 
-.filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: center;
-}
+
 
 .filter-box {
     display: flex;

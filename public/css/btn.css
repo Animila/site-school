@@ -1,0 +1,27 @@
+.btn {
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: white;
+    width: fit-content;
+    cursor: pointer;
+    height: auto;
+}
+
+.btn a {
+    color: inherit;
+}
+
+.btn.btn-new {
+    background: #198754;
+}
+
+.btn.btn-edit {
+    background: #ffc107;
+    color: black;
+}
+
+.btn.btn-delete {
+    background: #dc3545;
+}
