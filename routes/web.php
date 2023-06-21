@@ -22,17 +22,18 @@ Route::get('/', [RecentController::class, 'getRecent'])->name('index');
 
 //документы
 Route::prefix('documents')->group(function () {
-    Route::get('/', [DocumentController::class, 'getAllDocument'])->name('documents.getAll');
-    Route::get('/{id}', [DocumentController::class, 'getOneDocument'])->name('documents.getOne');
-    Route::post('/', [DocumentController::class, 'postDocument'])->name('documents.post');
-    Route::delete('/{id}', [DocumentController::class, 'deleteDocument'])->name('documents.delete');
-    Route::put('/{id}', [DocumentController::class, 'putDocument'])->name('documents.put');
+    Route::get('/create', [DocumentController::class, 'createShow'])->name('documents.createShow');
+    Route::get('/', [DocumentController::class, 'index'])->name('documents.index');
+    Route::get('/{id}', [DocumentController::class, 'show'])->name('documents.show');
+    Route::post('/', [DocumentController::class, 'create'])->name('documents.create');
+    Route::delete('/{id}', [DocumentController::class, 'delete'])->name('documents.delete');
+    Route::put('/{id}', [DocumentController::class, 'edit'])->name('documents.edit');
 });
 
 //мероприятия
 Route::prefix('events')->group(function () {
-    Route::get('/', [EventsController::class, 'getAllEvents'])->name('events.getAll');
-    Route::get('/{id}', [EventsController::class,'getOneEvent'])->name('events.getOne');
+    Route::get('/', [EventsController::class, 'getAllEvents'])->name('events.index');
+    Route::get('/{id}', [EventsController::class,'getOneEvent'])->name('events.show');
     Route::post('/', [EventsController::class, 'postEvent'])->name('events.post');
     Route::delete('/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
     Route::put('/{id}', [EventsController::class, 'putEvent'])->name('events.put');

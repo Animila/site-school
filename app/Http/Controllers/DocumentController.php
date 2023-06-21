@@ -10,71 +10,98 @@ use Leonied7\Yandex\Disk;
 
 class DocumentController extends Controller
 {
-    public function getDisk() {
-        $oauth_token = SocialAccount::first()->token;
-        $yandexDisk = new Disk($oauth_token);
-
-        return $yandexDisk;
-    }
-
-    public function openView() {
-        return view('content/file_load');
-    }
-
-    public function getAllDocument()
+    // GET
+    public function index()
     {
         $doc_list = Documents::all()->all();
         return view('content/documents', compact('doc_list'));
     }
 
-    public function getOneDocument($id)
+    // GET id
+    public function show($id)
     {
         $doc = Documents::find($id);
         return view('content/document', compact('doc'));
     }
 
-    public function postDocument(Request $request)
-    {
-        $yandexDisk = $this->getDisk();
-        $path = null;
-        $file_local = $request->files->get('pathname');
-
-        //загрузка на сервер и получение пути
-        try {
-            $path = Storage::putFileAs('files', $file_local, $file_local->getClientOriginalName());
-        } catch (\Exception $e) {
-            return view('content/file_loaded', compact($e));
-        }
-
-        // получаем все значения из других input
-        try {
-            $param = $request->request->all();
-        } catch (\Exception $e) {
-            return view('content/file_loaded', compact($e));
-        }
-
-        try {
-            // загрузка на диск
-            $file = $yandexDisk->file('/'.$file_local->getClientOriginalName());
-            $file->upload(new Disk\Stream\File(Storage::path($path), Disk\Stream\File::MODE_READ));
-
-            // получение пути в диске
-            $filepath = $file->getPath();
-            $param['pathname'] = $filepath;
-
-            // загрузка данных в БД
-            $new_doc = Documents::create($param);
-
-            // удаление файла с сервера
-            Storage::delete($file_local);
-        } catch (\Exception $e) {
-            return view('content/file_loaded', compact($e));
-        }
-
-        return redirect()->route('documents.getAll');
+    // GET
+    public function createShow() {
+        /* вывод экрана создания */
+        return view('content/file_load');
     }
 
-    public function deleteDocument($id)
+    // POST
+    public function create(Request $request)
+    {
+        $yandexDisk = $this->getDisk();
+        $isEmpty = true;
+        $isLocalFile = false;
+        $fileLocal = $request->files->get('pathname');
+        $fileLocalPath = null;
+        $fileLocalName = $fileLocal->getClientOriginalName();
+
+        [$fileLocalPath, $isLocalFile] = $this->loadLocal($fileLocal, $fileLocalName);
+
+        $params = $request->request->all();
+        $isEmpty = $this->checkParams($params);
+
+        // если параметры пустые или нет локального файла вернуть
+        if ($isEmpty and !$isLocalFile) {
+            $result = ["success"=> false, "message"=>'Ошибка сохранения: Нет файла или отсутствуют данные'];
+            return response()->json($result);
+        }
+
+        $fileToYandexPath = $this->loadYandex($yandexDisk, $fileLocalName, $fileLocalPath);
+        $this->loadDB($params, $fileToYandexPath);
+        $this->deleteLocal($fileLocalPath);
+
+        return redirect()->route('documents.index');
+    }
+
+    function getDisk() {
+        /* Запуск яндекс диска */
+        $oauth_token = SocialAccount::first()->token;
+        $yandexDisk = new Disk($oauth_token);
+        return $yandexDisk;
+    }
+    function loadLocal($fileLocal, $fileLocalName) {
+        try {
+            $fileLocalPath = Storage::putFileAs('files', $fileLocal, $fileLocalName);
+            $isLocalFile = true;
+            return [$fileLocalPath, $isLocalFile];
+        } catch (\Exception $e) {
+            dd($e);
+        }
+    }
+    function checkParams($parameters) {
+            return $parameters === [];
+    }
+    function loadYandex($yandexDisk, $fileLocalName, $fileLocalPath) {
+        try {
+            // загрузка на яндекс
+            $fileToYandex = $yandexDisk->file('/'.$fileLocalName);
+            $fileToYandex->upload(new Disk\Stream\File(Storage::path($fileLocalPath), Disk\Stream\File::MODE_READ));
+            return $fileToYandex->getPath();
+
+        } catch (\Exception $error) {
+            dd($error);
+//            return view('content/file_load', compact($error));
+        }
+    }
+    function loadDB($parameters, $fileToYandexPath) {
+        try {
+            $parameters['pathname'] = $fileToYandexPath;
+            return Documents::create($parameters);
+        } catch (\Exception $error) {
+            dd($error);
+        }
+    }
+    function deleteLocal($fileLocalPath) {
+        return Storage::delete($fileLocalPath);
+    }
+
+
+    public function delete($id)
     {
         $yandexDisk = $this->getDisk();
 
@@ -92,7 +119,7 @@ class DocumentController extends Controller
         dd($delete_doc);
     }
 
-    public function putDocument($id, Request $request)
+    public function edit($id, Request $request)
     {
         try {
             $param = $request->request->all();
