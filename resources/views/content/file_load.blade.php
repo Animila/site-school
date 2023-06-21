@@ -8,7 +8,7 @@
     <title>Load</title>
 </head>
 <body>
-<form action="{{ route('disk.post') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('documents.post') }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="text" placeholder="Наименование" name="name">
     <input type="date" name="date">
