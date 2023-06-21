@@ -38,6 +38,8 @@ Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('events.
 Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
 Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
 Route::get('/auth/logout', [SocialController::class, 'logout'])->name('auth.logout');
+Route::get('/profile', [SocialController::class, 'profile'])->name('auth.profile');
+Route::put('/profile', [SocialController::class])->name('auth.edit');
 
 Route::get('/disk', [DiskController::class, 'openView']);
 Route::post('/disk', [DiskController::class, 'postDoc'])->name('disk.post');
