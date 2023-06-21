@@ -23,18 +23,18 @@ Route::get('/', function () {
 })->name('index');
 
 //документы
-Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('getalldocs');
-Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('getdoc');
-Route::post('/documents', [DocumentController::class, 'postDocument'])->name('postdoc');
-Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('deletedoc');
-Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('putdoc');
+Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('documents.getAll');
+Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('documents.getOne');
+Route::post('/documents', [DocumentController::class, 'postDocument'])->name('documents.post');
+Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('documents.delete');
+Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('documents.put');
 
 //мероприятия
-Route::get('/events', [EventsController::class, 'getAllEvents'])->name('getallevents');
-Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('getevent');
-Route::post('/events', [EventsController::class, 'postEvent'])->name('postevent');
-Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('deleteevent');
-Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('putevent');
+Route::get('/events', [EventsController::class, 'getAllEvents'])->name('events.getAll');
+Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('events.getOne');
+Route::post('/events', [EventsController::class, 'postEvent'])->name('events.post');
+Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
+Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('events.put');
 
 // Oauth Авторизация
 Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
@@ -42,3 +42,4 @@ Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handle
 Route::get('/auth/logout', [SocialController::class, 'logout'])->name('auth.logout');
 
 Route::get('/disk', [DiskController::class, 'getDisk']);
+Route::post('/disk', [DiskController::class, 'postDoc']);
