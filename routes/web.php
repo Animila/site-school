@@ -21,23 +21,30 @@ use App\Http\Controllers\RecentController;
 Route::get('/', [RecentController::class, 'getRecent'])->name('index');
 
 //документы
-Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('documents.getAll');
-Route::get('/documents/{id}', [DocumentController::class, 'getOneDocument'])->name('documents.getOne');
-Route::post('/documents', [DocumentController::class, 'postDocument'])->name('documents.post');
-Route::delete('/documents/{id}', [DocumentController::class, 'deleteDocument'])->name('documents.delete');
-Route::put('/documents/{id}', [DocumentController::class, 'putDocument'])->name('documents.put');
+Route::prefix('documents')->group(function () {
+    Route::get('/', [DocumentController::class, 'getAllDocument'])->name('documents.getAll');
+    Route::get('/{id}', [DocumentController::class, 'getOneDocument'])->name('documents.getOne');
+    Route::post('/', [DocumentController::class, 'postDocument'])->name('documents.post');
+    Route::delete('/{id}', [DocumentController::class, 'deleteDocument'])->name('documents.delete');
+    Route::put('/{id}', [DocumentController::class, 'putDocument'])->name('documents.put');
+});
 
 //мероприятия
-Route::get('/events', [EventsController::class, 'getAllEvents'])->name('events.getAll');
-Route::get('/events/{id}', [EventsController::class,'getOneEvent'])->name('events.getOne');
-Route::post('/events', [EventsController::class, 'postEvent'])->name('events.post');
-Route::delete('/events/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
-Route::put('/events/{id}', [EventsController::class, 'putEvent'])->name('events.put');
+Route::prefix('events')->group(function () {
+    Route::get('/', [EventsController::class, 'getAllEvents'])->name('events.getAll');
+    Route::get('/{id}', [EventsController::class,'getOneEvent'])->name('events.getOne');
+    Route::post('/', [EventsController::class, 'postEvent'])->name('events.post');
+    Route::delete('/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
+    Route::put('/{id}', [EventsController::class, 'putEvent'])->name('events.put');
+});
 
 // Oauth Авторизация
-Route::get('/social-auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
-Route::get('/social-auth/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
-Route::get('/auth/logout', [SocialController::class, 'logout'])->name('auth.logout');
+Route::prefix('social-auth')->group(function () {
+    Route::get('/{provider}', [SocialController::class, 'redirectToProvider'])->name('auth.social');
+    Route::get('/{provider}/callback', [SocialController::class, 'handleProviderCallback'])->name('auth.social.callback');
+});
 
-Route::get('/disk', [DiskController::class, 'openView']);
-Route::post('/disk', [DiskController::class, 'postDoc'])->name('disk.post');
+// авторизация
+Route::prefix('auth')->group(function () {
+    Route::get('/logout', [SocialController::class, 'logout'])->name('auth.logout');
+});
