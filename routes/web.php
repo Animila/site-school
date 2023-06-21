@@ -45,6 +45,8 @@ Route::prefix('social-auth')->group(function () {
 });
 
 // авторизация
-Route::prefix('auth')->group(function () {
+Route::prefix('profile')->group(function () {
+    Route::get('/', [SocialController::class, 'profile'])->name('auth.profile');
+    Route::put('/', [SocialController::class])->name('auth.edit');
     Route::get('/logout', [SocialController::class, 'logout'])->name('auth.logout');
 });
