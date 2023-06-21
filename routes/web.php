@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\SocialController;
-use \App\Http\Controllers\DiskController;
+use App\Http\Controllers\DiskController;
+use App\Http\Controllers\RecentController;
 
 /*
 |--------------------------------------------------------------------------

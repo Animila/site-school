@@ -10,13 +10,13 @@ class DocumentController extends Controller
     public function getAllDocument()
     {
         $doc_list = Documents::all()->all();
-        return view('documents', compact('doc_list'));
+        return view('content/documents', compact('doc_list'));
     }
 
     public function getOneDocument($id)
     {
         $doc = Documents::find($id);
-        return view('document', compact('doc'));
+        return view('content/document', compact('doc'));
     }
 
     public function postDocument(Request $request)
