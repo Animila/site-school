@@ -18,9 +18,7 @@ use App\Http\Controllers\RecentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', [RecentController::class, 'getRecent'])->name('index');
 
 //документы
 Route::get('/documents', [DocumentController::class, 'getAllDocument'])->name('documents.getAll');
