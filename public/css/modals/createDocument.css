@@ -1,0 +1,35 @@
+.document-create {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+}
+
+.document-create input {
+    height: 48px;
+    margin: 20px 0 ;
+    border-radius: 8px;
+    border: 1px solid #8C8C8C;
+    background: rgba(123, 151, 206, 0.06);
+    padding: 13px 16px;
+    box-sizing: border-box;
+}
+
+.document-create select {
+    height: 48px;
+    margin: 20px 0 ;
+    border-radius: 8px;
+    border: 1px solid #8C8C8C;
+    background: rgba(123, 151, 206, 0.06);
+    padding: 13px 16px;
+    box-sizing: border-box;
+}
+
+.document-create button {
+    border-radius: 49px;
+    background: var(--accent-color);
+    height: 42px;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}

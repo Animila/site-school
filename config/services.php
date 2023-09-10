@@ -30,8 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'yandex' => [
-        'client_id' => 'fe377aa30de449c68c3b3a4d120f73ea',
-        'client_secret' => '3ad932892cd1446abd4b96a54655e420',
+        'client_id' => env('YANDEX_CLIENT_ID'),
+        'client_secret' => env('YANDEX_CLIENT_SECRET'),
         'redirect' => '/social-auth/yandex/callback',
     ],
 

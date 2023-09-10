@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\SocialController;
-use App\Http\Controllers\DiskController;
+use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\RecentController;
 
 /*
@@ -24,10 +24,19 @@ Route::get('/', [RecentController::class, 'getRecent'])->name('index');
 Route::prefix('documents')->group(function () {
     Route::get('/create', [DocumentController::class, 'createShow'])->name('documents.createShow');
     Route::get('/', [DocumentController::class, 'index'])->name('documents.index');
+    Route::get('/type/{id}', [DocumentController::class, 'type'])->name('documents.type');
     Route::get('/{id}', [DocumentController::class, 'show'])->name('documents.show');
     Route::post('/', [DocumentController::class, 'create'])->name('documents.create');
     Route::delete('/{id}', [DocumentController::class, 'delete'])->name('documents.delete');
-    Route::put('/{id}', [DocumentController::class, 'edit'])->name('documents.edit');
+    Route::patch('/', [DocumentController::class, 'edit'])->name('documents.edit');
+    Route::post('/downloads', [DocumentController::class, 'download'])->name('documents.download');
+});
+
+Route::prefix('types')->group(function () {
+    Route::get('/', [TypeDocumentController::class, 'index'])->name('types.index');
+    Route::post('/', [TypeDocumentController::class, 'create'])->name('types.create');
+    Route::patch('/', [TypeDocumentController::class, 'edit'])->name('types.edit');
+    Route::delete('/{id}', [TypeDocumentController::class, 'delete'])->name('types.delete');
 });
 
 //мероприятия

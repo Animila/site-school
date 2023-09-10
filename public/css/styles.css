@@ -1,0 +1,10 @@
+@import "colors.css";
+@import "global.css";
+@import "sidebar.css";
+@import "main.css";
+@import "header.css";
+@import "profile.css";
+@import "documents/document.css";
+@import "button.css";
+@import "modals/modals.css";
+@import "modals/createDocument.css";

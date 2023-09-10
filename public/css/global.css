@@ -1,0 +1,35 @@
+html, body {
+    background-color: #EDEDED;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: var(--text-and-icons);
+}
+
+h1 {
+    font-family: Inter, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 1.45502646vw;
+    width: auto;
+}
+
+
+input {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+table {
+    margin: 0;
+    padding: 0;
+}
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocType;
 use App\Models\Documents;
 use App\Models\SocialAccount;
 use Illuminate\Http\Request;
@@ -13,21 +14,36 @@ class DocumentController extends Controller
     // GET
     public function index()
     {
+
         $doc_list = Documents::all()->all();
-        return view('content/documents', compact('doc_list'));
+        $docType_list = DocType::all()->all();
+        return view('documents/index', compact('doc_list', 'docType_list'));
+    }
+
+    public function type($id)
+    {
+        $doc_list = Documents::where('typeid', $id)->get();
+        $docType_list = DocType::all()->all();
+        return view('documents/index', compact('doc_list', 'docType_list'));
     }
 
     // GET id
     public function show($id)
     {
         $doc = Documents::find($id);
-        return view('content/document', compact('doc'));
+        return view('documents/show', compact('doc'));
     }
 
-    // GET
-    public function createShow() {
-        /* вывод экрана создания */
-        return view('content/file_load');
+    public function download(Request $request) {
+        try {
+        $data = $request->all();
+        $yandexDisk = $this->getDisk();
+        $file = $yandexDisk->file($data['pathname']);
+        $file->download(new Disk\Stream\File('E:\khris\Desktop\Мои файлы', Disk\Stream\File::MODE_WRITE)); //bool
+        } catch (\Exception $error) {
+            dd($error);
+        }
+        return redirect()->route('documents.index');
     }
 
     // POST
@@ -116,26 +132,28 @@ class DocumentController extends Controller
             dd($e);
         }
 
-        dd($delete_doc);
+        return redirect()->route('documents.index');
     }
 
-    public function edit($id, Request $request)
+    public function edit(Request $request)
     {
         try {
             $param = $request->request->all();
-            $put_doc = Documents::find($id);
+            $put_doc = Documents::find($param['id']);
 
             $put_doc['name'] = $param['name'];
             $put_doc['date'] = $param['date'];
-            $put_doc['pathname'] = $param['pathname'];
+            if(isset($param['pathname'])) {
+                $put_doc['pathname'] = $param['pathname'];
+            }
             $put_doc['typeid'] = $param['typeid'];
 
+
             $put_doc->save();
-            $result = ["success"=> true, "message"=>$put_doc];
         } catch (\Exception $e) {
-            $result = ["success"=>false, "message"=>$e];
+            dd($e);
         }
 
-        return response()->json($result);
+        return redirect()->route('documents.index');
     }
 }

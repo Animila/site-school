@@ -1,168 +1,17 @@
-html, body {
-    background-color: #EDEDED;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-}
-
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    /*width: 60%;*/
-    margin: 0 16.146vw;
+    height: -webkit-fill-available;
+    justify-content: space-between;
 }
 
-h1 {
-    width: 100%;
-    font-family: Arial, serif;
-    color: #5A1E67;
-    font-size: 40px;
+.main-content {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
 }
 
-h2 {
-    font-family: Arial, serif;
-    font-size: 20px;
-    color: #2E2E2E;
-    margin-left: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-p {
-    font-size: 20px;
-    font-family: Arial, serif;
-    margin-bottom: 10px;
-}
-
-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 98%;
-    margin-top: 10px;
-    border: 1px solid #6A6A6A;
-    font-family: Arial, serif;
-}
-
-tr {
-    border: 1px solid #6A6A6A;
-    height: 40px;
-}
-
-td {
-    padding: 5px;
-    border: 1px solid #6A6A6A;
-}
-
-a {
-    outline: none;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    border-radius: 100%;
-}
-
-.edit-button {
-    background-color: #FDAC1B;
-    border: 0;
-}
-
-.delete-button {
-    background-color: #C2C2C2;
-}
-
-.download-button {
-    background-color: #A266AF;
-}
-
-.name-table {
-    width: 50%;
-}
-
-.date-table {
-    width: 20%;
-}
-
-.type-table {
-    width: 15%;
-}
-
-.action-table {
-    width: 15%;
-}
-
-.content-box {
-    width: 100%;
-    background-color: white;
-    border: 1px solid #505050;
-    border-radius: 15px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-}
-
-.db-header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #C2C2C2;
-    border: 1px solid #505050;
-    border-radius: 15px 15px 0 0;
-}
-
-.database {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    border-radius: 0 0 15px 15px;
-    padding-bottom: 0;
-}
-
-.table-footer {
-    padding: 10px;
-    width: 98%;
-    display: flex;
-}
-
-.create {
-    border-radius: 28px;
-    background-color: #A266AF;
-    height: 30px;
-    width: 130px;
-    font-size: 13px;
-    color: white;
-    padding-left: 5px;
-}
-
-.filters {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.filter-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.filter-input {
-    border: 1px solid #505050;
-    border-radius: 10px;
-    height: 40px;
-    font-size: 15px;
-    padding-left: 10px;
-}
-
-.big {
-    width: 380px;
-}
-
-.med {
-    width: 320px;
+.page-title {
+    margin-top: 19px;
+    margin-left: 1.38888889vw;
 }

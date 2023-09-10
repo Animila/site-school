@@ -15,6 +15,7 @@ class SocialController extends Controller
         Auth::logout();
         return redirect()->route('index');
     }
+
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();

@@ -1,0 +1,80 @@
+.table-content {
+    background: white;
+    margin-left: 68px;
+    margin-right: 78px;
+    margin-top: 36px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+}
+
+.table-tools {
+    height: 74px;
+    padding: 16px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.table-search {
+    width: 409.326px;
+    height: 41.768px;
+    border-radius: 36px;
+    background: #F0F0F0;
+    display: flex;
+}
+
+.table-search img {
+    width: 20px;
+    padding: 10px;
+}
+
+.table-search input {
+    width: -webkit-fill-available;
+}
+
+.table-data table {
+    width: 100%;
+    border: none;
+}
+
+.table-header {
+    height: 54px;
+    display: flex;
+    background: var(--dark-primary-color);
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.table-header td {
+    color: #FEFEFE;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.table-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    border-top: solid #E1E0E2;
+}
+
+.table-body td {
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.table-body-tool {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+
+
+
