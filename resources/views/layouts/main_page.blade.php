@@ -35,10 +35,6 @@
                     <a class="user__name">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
                     <a href="{{route('auth.logout')}}"><img src="{{asset('images/exit.svg')}}"  alt="выход"></a>
 
-{{--                    <div class="user__menu">--}}
-{{--                        <a class="user__cabinet" href="#">Кабинет</a>--}}
-{{--                        <a class="user__exit" href="{{route('auth.logout')}}">Выйти</a>--}}
-{{--                    </div>--}}
                 </div>
             @endauth
         </header>

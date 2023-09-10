@@ -2,7 +2,7 @@
     <div class="modal-content">
         <form action="{{ route('documents.edit') }}" method="post" enctype="multipart/form-data" class="document-create">
             @method('patch')
-            <span class="modal-title">Добавление документа</span>
+            <span class="modal-title">Изменение документа</span>
             @csrf
             <input type="hidden" name="id" id="doc_id">
             <input type="text" placeholder="Наименование" name="name" id="doc_name">

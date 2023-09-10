@@ -26,9 +26,9 @@
             </div>
             <div class="menu__item menu__description">
                 <a href="{{route('events.index')}}">- Список мероприятий</a>
-                <a href="#">- Календарь</a>
-                <a href="#">- Наступающие</a>
-                <a href="#">- Прошедшие</a>
+                <a href="{{route('events.calendar')}}">- Календарь</a>
+                <a href="{{route('events.next')}}">- Наступающие</a>
+                <a href="{{route('events.back')}}">- Прошедшие</a>
             </div>
         </div>
         <div class="menu__item">
@@ -43,27 +43,6 @@
                 <a href="#">- Заблокированные</a>
             </div>
         </div>
-
-{{--        <a href="{{route('index')}}">Документы</a>--}}
-{{--        <a href="{{route('index')}}">Недавние изменения</a>--}}
-{{--        <a href="{{route('documents.index')}}">Документы</a>--}}
-{{--        <a href="{{route("events.index")}}">Мероприятия</a>--}}
     </nav>
-{{--    <div class="menu-bg" id="menu-bg"></div>--}}
-
 </aside>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById("burger").addEventListener("click", function() {
-
-            document.querySelector(".menu-bg").classList.toggle("active")
-            document.querySelector(".menu").classList.toggle("open")
-        })
-        document.getElementById("menu-bg").addEventListener("click", function() {
-
-            document.querySelector(".menu-bg").classList.toggle("active")
-            document.querySelector(".menu").classList.toggle("open")
-        })
-    })
-</script>

@@ -22,17 +22,16 @@ class EventsController extends Controller
     }
 
     //создать мероприятие
-    public function postEvent(Request $request)
+    public function createEvent(Request $request)
     {
         try {
             $param = $request->request->all();
-            $new_event = Events::create($param);
-            $result = ["success"=> true, "message"=>$new_event];
+            Events::create($param);
         } catch (\Exception $e) {
-            $result = ["success"=>false, "message"=>$e];
+            dd(["success"=>false, "message"=>$e]);
         }
 
-        return response()->json($result);
+        return redirect()->route('events.index');
     }
 
     //удалить мероприятие
@@ -45,11 +44,11 @@ class EventsController extends Controller
     }
 
     //изменить мероприятие
-    public function putEvent($id, Request $request)
+    public function editEvent(Request $request)
     {
         try {
             $param = $request->request->all();
-            $put_event = Events::find($id);
+            $put_event = Events::find($request['id']);
 
             $put_event['datetime'] = $param['datetime'];
             $put_event['title'] = $param['title'];
@@ -61,6 +60,27 @@ class EventsController extends Controller
             $result = ["success"=>false, "message"=>$e];
         }
 
-        return response()->json($result);
+        return redirect()->route('events.index');
+    }
+
+    public function getCalendar() {
+        $event_list = Events::all()->all();
+        return view('events/calendary', compact('event_list'));
+    }
+
+    public function nextEvent() {
+        $currentDateTime = now();
+        $event_list = Events::where('datetime', '>', $currentDateTime)->get();
+
+        return view('events/index', compact('event_list'));
+
+    }
+
+    public function backEvent() {
+        $currentDateTime = now();
+        $event_list = Events::where('datetime', '<', $currentDateTime)->get();
+
+        return view('events/index', compact('event_list'));
+
     }
 }

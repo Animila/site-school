@@ -33,3 +33,15 @@
     font-size: 14px;
     font-family: 'Inter', sans-serif;
 }
+
+.document-create textarea {
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #8C8C8C;
+    background: rgba(123, 151, 206, 0.06);
+    padding: 13px 16px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+

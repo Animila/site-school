@@ -42,10 +42,13 @@ Route::prefix('types')->group(function () {
 //мероприятия
 Route::prefix('events')->group(function () {
     Route::get('/', [EventsController::class, 'getAllEvents'])->name('events.index');
-    Route::get('/{id}', [EventsController::class,'getOneEvent'])->name('events.show');
-    Route::post('/', [EventsController::class, 'postEvent'])->name('events.post');
+//    Route::get('/{id}', [EventsController::class,'getOneEvent'])->name('events.show');
+    Route::post('/', [EventsController::class, 'createEvent'])->name('events.create');
     Route::delete('/{id}', [EventsController::class, 'deleteEvent'])->name('events.delete');
-    Route::put('/{id}', [EventsController::class, 'putEvent'])->name('events.put');
+    Route::patch('/', [EventsController::class, 'editEvent'])->name('events.edit');
+    Route::get('/calendar', [EventsController::class, 'getCalendar'])->name('events.calendar');
+    Route::get('/next', [EventsController::class, 'nextEvent'])->name('events.next');
+    Route::get('/back', [EventsController::class, 'backEvent'])->name('events.back');
 });
 
 // Oauth Авторизация

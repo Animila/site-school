@@ -9,7 +9,7 @@
             </div>
             <div class="table-search">
                 <img src="{{asset('images/search.svg')}}" alt="поиск" >
-                <input type="text" placeholder="Поиск по документам" id="documentSearch">
+                <input type="text" placeholder="Поиск по документам" id="searchInput">
             </div>
         </div>
         <div class="table-data">
@@ -17,23 +17,20 @@
                 <tr class="table-header">
                     <td>Наименование</td>
                     <td>Дата</td>
-                    <td>Тип файла</td>
+                    <td>Описание</td>
                     <td>Действие</td>
                 </tr>
                 @foreach($event_list as $item)
                     <tr class="table-body">
                         <td>{{$item->title}}</td>
                         <td>{{$item->datetime}}</td>
-                        <td>Мероприятие</td>
+                        <td>{{$item->description}}</td>
                         <td class="table-body-tool">
-                            <a href="#" class="btn btn_warning">
+                            <a href="#" class="btn btn_warning" onclick="changeActiveEdit({{$item}})">
                                 <img src="{{asset('images/edit.svg')}}" width="20" alt="">
                             </a>
                             <a href="#" class="btn btn_warning">
                                 <img src="{{asset('images/delete.svg')}}" width="20" alt="">
-                            </a>
-                            <a href="#" class="btn btn_warning">
-                                <img src="{{asset('images/download.svg')}}" width="20" alt="">
                             </a>
                         </td>
                     </tr>
@@ -42,6 +39,7 @@
         </div>
     </div>
     @include('.modals.events.create')
+    @include('.modals.events.edit')
 
 
 @endsection
