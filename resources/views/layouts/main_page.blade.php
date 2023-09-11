@@ -41,9 +41,6 @@
         <div class="main-content">
             @yield('content')
         </div>
-        <footer>
-            Зад
-        </footer>
     </main>
 
     @yield('js_link')

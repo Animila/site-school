@@ -5,7 +5,7 @@ services:
     image: nginx
     volumes:
      - ./:/var/www/
-     - ./docker-compose/nginx/:/etc/nginx/conf.d/
+     - ./docker/nginx/:/etc/nginx/conf.d/
     ports:
       - "8876:80"
     container_name: nginx
@@ -15,16 +15,15 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker-compose/lardocker/Dockerfile
+      dockerfile: docker/lardocker/Dockerfile
     volumes:
       - ./:/var/www
-    container_name: app        
-
-
- 
+    container_name: app
 
 
 
 
-  
-  
+
+
+
+

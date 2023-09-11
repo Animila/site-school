@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class RecentController extends Controller
 {
     public function getRecent() {
-        return view('content/recent');
+        return view('recents/index');
     }
 }

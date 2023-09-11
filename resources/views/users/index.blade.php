@@ -49,4 +49,5 @@
         </div>
     </div>
     @include('modals.users.create')
+    @include('modals.users.edit')
 @endsection
