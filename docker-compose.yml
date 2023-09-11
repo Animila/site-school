@@ -1,8 +1,30 @@
 version: '3'
 
 services:
- nginx:
-  image: nginx
-  ports:
-   - "8876:80"
+  nginx:
+    image: nginx
+    volumes:
+     - ./:/var/www/
+     - ./docker-compose/nginx/:/etc/nginx/conf.d/
+    ports:
+      - "8876:80"
+    container_name: nginx
+    depends_on:
+      - app
+
+  app:
+    build:
+      context: .
+      dockerfile: docker-compose/lardocker/Dockerfile
+    volumes:
+      - ./:/var/www
+    container_name: app        
+
+
+ 
+
+
+
+
+  
   
