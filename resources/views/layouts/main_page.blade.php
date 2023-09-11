@@ -32,7 +32,7 @@
             @endguest
             @auth()
 
-                    <a class="user__name">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                    <a class="user__name" href="{{route('auth.index')}}">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
                     <a href="{{route('auth.logout')}}"><img src="{{asset('images/exit.svg')}}"  alt="выход"></a>
 
                 </div>

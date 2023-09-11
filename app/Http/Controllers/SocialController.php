@@ -77,8 +77,8 @@ class SocialController extends Controller
         ]);
     }
 
-    public function profile() {
-        return view('content/profile');
+    public function index() {
+        return view('profile/index');
     }
 
     public function editAccount() {

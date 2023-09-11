@@ -14,7 +14,7 @@
                 @endforeach
             </select>
 
-            <button>Загрузить</button>
+            <button>Сохранить</button>
         </form>
     </div>
     <div class="modal-bg" onclick="changeActiveEdit()"></div>

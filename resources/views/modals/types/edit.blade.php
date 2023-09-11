@@ -8,7 +8,7 @@
             <input type="hidden" name="id" id="item_id">
             <input type="hidden" name="created_at" id="created_at">
             <input type="hidden" name="updated_at" id="updated_at">
-            <button>Загрузить</button>
+            <button>Сохранить</button>
         </form>
     </div>
     <div class="modal-bg" onclick="changeActiveEdit()"></div>

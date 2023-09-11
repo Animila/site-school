@@ -37,7 +37,7 @@
                 <span>Аккаунт</span>
             </div>
             <div class="menu__item menu__description">
-                <a href="#">- Все пользователи</a>
+                <a href="{{route('users.index')}}">- Все пользователи</a>
                 <a href="#">- Роли</a>
                 <a href="#">- Активные</a>
                 <a href="#">- Заблокированные</a>

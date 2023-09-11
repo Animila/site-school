@@ -59,7 +59,14 @@ Route::prefix('social-auth')->group(function () {
 
 // авторизация
 Route::prefix('profile')->group(function () {
-    Route::get('/', [SocialController::class, 'profile'])->name('auth.profile');
+    Route::get('/', [SocialController::class, 'index'])->name('auth.index');
+    Route::put('/', [SocialController::class])->name('auth.edit');
+    Route::get('/logout', [SocialController::class, 'logout'])->name('auth.logout');
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/', [\App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
+    Route::post('/', [\App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
     Route::put('/', [SocialController::class])->name('auth.edit');
     Route::get('/logout', [SocialController::class, 'logout'])->name('auth.logout');
 });

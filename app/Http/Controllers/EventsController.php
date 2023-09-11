@@ -39,8 +39,7 @@ class EventsController extends Controller
     {
         $delete_event = Events::find($id);
         $delete_event->delete();
-
-        dd($delete_event);
+        return redirect()->back();
     }
 
     //изменить мероприятие

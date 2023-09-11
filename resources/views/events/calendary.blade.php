@@ -15,7 +15,16 @@
             const options = {
                 defaultView: 'month',
                 isReadOnly: true,
-                language: 'ru',
+                month: {
+                    daynames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'], // Translate the required language.
+                    startDayOfWeek: 0,
+                    narrowWeekend: true
+                },
+                week: {
+                    daynames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'], // Translate the required language.
+                    startDayOfWeek: 0,
+                    narrowWeekend: true
+                },
 
             };
 

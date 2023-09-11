@@ -43,7 +43,7 @@ class DocumentController extends Controller
         } catch (\Exception $error) {
             dd($error);
         }
-        return redirect()->route('documents.index');
+        return redirect()->back();
     }
 
     // POST
@@ -71,7 +71,7 @@ class DocumentController extends Controller
         $this->loadDB($params, $fileToYandexPath);
         $this->deleteLocal($fileLocalPath);
 
-        return redirect()->route('documents.index');
+        return redirect()->back();
     }
 
     function getDisk() {
@@ -132,7 +132,7 @@ class DocumentController extends Controller
             dd($e);
         }
 
-        return redirect()->route('documents.index');
+        return redirect()->back();
     }
 
     public function edit(Request $request)
@@ -154,6 +154,6 @@ class DocumentController extends Controller
             dd($e);
         }
 
-        return redirect()->route('documents.index');
+        return redirect()->back();
     }
 }
