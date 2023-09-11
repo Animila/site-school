@@ -81,7 +81,4 @@ class SocialController extends Controller
         return view('profile/index');
     }
 
-    public function editAccount() {
-        return redirect()->route('auth.profile');
-    }
 }

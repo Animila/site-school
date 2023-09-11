@@ -1,7 +1,8 @@
-<div class="modal" id="createModal" style="visibility: hidden">
+<div class="modal" id="editModal" style="visibility: hidden">
     <div class="modal-content">
-        <form action="{{ route('users.create') }}" method="post" class="document-create">
+        <form action="{{ route('users.edit') }}" method="post" class="document-create">
             <span class="modal-title">Редактирование пользователя</span>
+            @method('patch')
             @csrf
             <input type="hidden" name="id" id="user_id">
             <input type="text" placeholder="Имя" name="name" id="user_name">
@@ -18,16 +19,17 @@
     function changeActiveEdit(item = null) {
 
         if(item) {
-            const doc_id = document.querySelector('#user_id')
-            const doc_name = document.querySelector('#user_name')
-            const doc_email = document.querySelector('#user_email')
 
-            doc_id.value = item['id']
-            doc_name.value = item['name']
-            doc_email.value = item['email']
+            const user_id = document.querySelector('#user_id')
+            const user_name = document.querySelector('#user_name')
+            const user_email = document.querySelector('#user_email')
+
+            user_id.value = item['id']
+            user_name.value = item['name']
+            user_email.value = item['email']
         }
 
-        const content = document.querySelector('#createModal')
+        const content = document.querySelector('#editModal')
         if(content.style.visibility === "") {
             content.style.visibility = "hidden"
         } else {

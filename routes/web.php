@@ -67,6 +67,7 @@ Route::prefix('profile')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', [\App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
     Route::post('/', [\App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
-    Route::put('/', [SocialController::class])->name('auth.edit');
+    Route::patch('/', [\App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit');
+    Route::delete('/{id}', [\App\Http\Controllers\UsersController::class, 'delete'])->name('users.delete');
     Route::get('/logout', [SocialController::class, 'logout'])->name('auth.logout');
 });
