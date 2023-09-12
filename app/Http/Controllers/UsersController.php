@@ -19,4 +19,31 @@ class UsersController extends Controller
         User::create($data);
         return redirect()->back();
     }
+
+    public function edit(Request $request) {
+        try {
+            $data = $request->all();
+            $update_user = User::find($data['id']);
+            if(isset($data['password'])) {
+                $update_user['password'] = Hash::make($data['password']);
+            }
+
+            $update_user['name'] = $data['name'];
+            $update_user['email'] = $data['email'];
+            $update_user->save();
+        } catch (\Exception $error) {
+            dd($error);
+        }
+        return redirect()->back();
+
+    }
+    public function delete($id) {
+        try {
+            $deleted = User::find($id);
+            $deleted->delete();
+        } catch (\Exception $error) {
+            dd($error);
+        }
+        return redirect()->back();
+    }
 }

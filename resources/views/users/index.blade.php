@@ -29,16 +29,10 @@
                             <a href="#" class="btn btn_warning" onclick="changeActiveEdit({{$item}})">
                                 <img src="{{asset('images/edit.svg')}}" width="20" alt="">
                             </a>
-                            <form action="{{ route('documents.delete', $item->id) }}" method="POST">
+                            <form action="{{ route('users.delete', $item->id) }}" method="POST">
                                 @method('delete')
                                 <button href="#" class="btn btn_warning">
                                     <img src="{{asset('images/delete.svg')}}" width="20" alt="">
-                                </button>
-                            </form>
-                            <form action="{{route('documents.download')}}" method="POST">
-                                <input type="hidden" name="pathname" value="{{$item->pathname}}">
-                                <button class="btn btn_warning">
-                                    <img src="{{asset('images/download.svg')}}" width="20" alt="">
                                 </button>
                             </form>
 
