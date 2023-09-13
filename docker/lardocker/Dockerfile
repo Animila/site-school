@@ -21,7 +21,12 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
-   
-    
+
+# Установка разрешений для каталога сессий и кэша
+RUN chmod -R 775 /var/www/storage
+
+# Включение текущего пользователя www-data в группу, имеющую права на запись в /var/www/storage
+RUN usermod -a -G www-data www-data
+
 
 WORKDIR /var/www
